@@ -23,6 +23,39 @@ let prevButton = document.getElementById("prev");
 nextButton.onclick = nextSlide;
 prevButton.onclick = prevSlide;
 
+// Create the Main UL list
+
+let paginationElement = document.createElement("ul");
+
+// Set ID on Created UL element
+
+paginationElement.setAttribute("id", "pagination-ul");
+
+// Create list items based in slides count
+
+for (let i = 1; i <= slidesCount; i++) {
+
+    // creat the line li 
+
+    let paginationItem = document.createElement("li");
+
+    // set custom attribute 
+
+    paginationElement.setAttribute("data-index", i);
+
+    // set item count 
+
+    paginationItem.appendChild(document.createTextNode(i));
+
+    // Append Items to the main UL list
+
+    paginationElement.appendChild(paginationItem);
+
+}
+
+// Add the created UL element to the page
+document.getElementById("indicators").appendChild(paginationElement);
+
 // Next Slide Function
 
 function nextSlide() {
