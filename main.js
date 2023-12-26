@@ -41,7 +41,7 @@ for (let i = 1; i <= slidesCount; i++) {
 
     // set custom attribute 
 
-    paginationElement.setAttribute("data-index", i);
+    paginationItem.setAttribute("data-index", i);
 
     // set item count 
 
