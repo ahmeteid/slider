@@ -56,6 +56,14 @@ for (let i = 1; i <= slidesCount; i++) {
 // Add the created UL element to the page
 document.getElementById("indicators").appendChild(paginationElement);
 
+// Get the new created Ul
+
+let paginationCreatedUl = document.getElementById("pagination-ul");
+
+// Trigger the Checker function
+
+theCkecker();
+
 // Next Slide Function
 
 function nextSlide() {
@@ -66,4 +74,21 @@ function nextSlide() {
 
 function prevSlide() {
     console.log("Previous");
+}
+
+// Create the checker function
+
+function theCkecker() {
+
+    //Set the slide number
+
+    slideNumberElement.textContent = "Slide #" + (currentSlide) + " of " + (slidesCount);
+
+    //Set active class on current slide
+
+    sliderImages[currentSlide -1].classList.add("active");
+
+    //Set active class on current pagination item
+
+    paginationCreatedUl.children[currentSlide -1].classList.add("active");
 }
