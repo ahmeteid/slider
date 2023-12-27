@@ -60,6 +60,10 @@ document.getElementById("indicators").appendChild(paginationElement);
 
 let paginationCreatedUl = document.getElementById("pagination-ul");
 
+// Get Pagination Bullets | Array.from [ES6 feature]
+
+let paginationsBullets = Array.from(document.querySelectorAll("pagination-ul li"))
+
 // Trigger the Checker function
 
 theCkecker();
@@ -84,6 +88,10 @@ function theCkecker() {
 
     slideNumberElement.textContent = "Slide #" + (currentSlide) + " of " + (slidesCount);
 
+    // Remove all active classes
+
+    removeAllActive();
+
     //Set active class on current slide
 
     sliderImages[currentSlide -1].classList.add("active");
@@ -91,4 +99,52 @@ function theCkecker() {
     //Set active class on current pagination item
 
     paginationCreatedUl.children[currentSlide -1].classList.add("active");
+
+    // Check the current slide is the First
+    
+    if (currentSlide == 1) {
+
+        // Add disaled class on Previous Button
+
+        prevButton.classList.add("disabled");
+
+    } else {
+
+        // Remove disaled class from Previous Button
+
+        prevButton.classList.remove("disabled")
+    }
+
+    // Check the current slide is the Last
+
+    if (currentSlide == slidesCount) {
+
+        // Add disaled class on Next Button
+
+        nextButton.classList.add("disabled");
+
+    } else {
+
+        // Remove disaled class from Next Button
+
+        nextButton.classList.remove("disabled");
+    }
+}
+
+
+// Remove all active classes from all elements (images and pagination bullets)
+
+function removeAllActive() {
+
+    // Loop through images
+
+    sliderImages.forEach(function(img) {
+        img.classList.remove("active");
+    });
+
+    // through Pagination Bullets
+
+    paginationsBullets.forEach(function(bullet) {
+        bullet.classList.remove("active");
+    });
 }
