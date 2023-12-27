@@ -62,7 +62,21 @@ let paginationCreatedUl = document.getElementById("pagination-ul");
 
 // Get Pagination Bullets | Array.from [ES6 feature]
 
-let paginationsBullets = Array.from(document.querySelectorAll("pagination-ul li"))
+let paginationsBullets = Array.from(document.querySelectorAll("#pagination-ul li"));
+
+// Loop through all Bulles items
+
+for (let i = 0; i < paginationsBullets.length; i++) {
+
+    paginationsBullets[i].onclick = function() {
+
+        currentSlide = parseInt(this.getAttribute("data-index"));
+
+        theCkecker();
+
+    }
+
+}
 
 // Trigger the Checker function
 
@@ -71,13 +85,40 @@ theCkecker();
 // Next Slide Function
 
 function nextSlide() {
-    console.log("Next");
+    
+    if (nextButton.classList.contains("disabled")) {
+
+        // Do nothing
+
+        return false
+
+    } else {
+
+        currentSlide++;
+
+        theCkecker();
+    }
+
 }
 
 // Previous Slide Function
 
 function prevSlide() {
-    console.log("Previous");
+    
+    if (prevButton.classList.contains("disabled")) {
+
+        // Do nothing
+
+        return false;
+
+    }  else {
+
+        currentSlide--;
+
+        theCkecker();
+
+    }
+
 }
 
 // Create the checker function
@@ -139,12 +180,16 @@ function removeAllActive() {
     // Loop through images
 
     sliderImages.forEach(function(img) {
+
         img.classList.remove("active");
+
     });
 
     // through Pagination Bullets
 
     paginationsBullets.forEach(function(bullet) {
+
         bullet.classList.remove("active");
+
     });
 }
